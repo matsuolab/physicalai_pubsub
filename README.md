@@ -65,4 +65,4 @@ This software is licensed under the MIT License. See the [LICENSE](LICENSE) file
 
 ## Author
 
-[Tatsuya Kamijo](tatsukamijo.github.io)
+[Tatsuya Kamijo](https://tatsukamijo.github.io/)
