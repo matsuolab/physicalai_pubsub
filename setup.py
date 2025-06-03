@@ -22,6 +22,8 @@ setup(
         'console_scripts': [
             'state_subscriber = physicalai_pubsub.state_subscriber:main',
             'action_publisher = physicalai_pubsub.action_publisher:main',
+            'timer_subscriber = physicalai_pubsub.timer_subscriber:main',
+            'timer_publisher = physicalai_pubsub.timer_publisher:main',
         ],
     },
 )
