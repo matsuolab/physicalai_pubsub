@@ -20,7 +20,6 @@ class TimerActionPublisher(Node):
         self.timer = self.create_timer(1.0, self.timer_callback)
         self.count = 5
         self.get_logger().info('カウントスタート！！！')
-        self.count -= 1
 
     def timer_callback(self):
         time_msg = String()
