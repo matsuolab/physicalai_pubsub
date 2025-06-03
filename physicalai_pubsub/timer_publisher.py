@@ -30,13 +30,7 @@ class TimerActionPublisher(Node):
             
         elif self.count == 0:
             
-            for i in range(3):
-                num = float(i)
-                self.move_to_position([i + 1.0, 1.0, 1.0, 1.0])
-                time.sleep(2)
-                self.move_to_position([i + 1.0, 0.0, 0.0, 0.0])             
-                time.sleep(2)
-            self.move_to_position([0.0, 0.0, 0.0, 0.0])
+            self.execute_delayed_actions()
             self.count -= 1
             time_msg.data = 'ストップ！！！'
         else:
