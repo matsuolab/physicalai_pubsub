@@ -43,13 +43,6 @@ class RobotStateSubscriber(Node):
         self.get_logger().info(f'タイマー受信: {msg.data}')
 
     def joint_state_callback(self, msg):
-        # self.get_logger().info('Received joint states:')
-        # for i, name in enumerate(msg.name):
-        #     pos = msg.position[i] if i < len(msg.position) else 0.0
-        #     vel = msg.velocity[i] if i < len(msg.velocity) else 0.0
-            # self.get_logger().info(
-            #     f'  Joint: {name}, Position: {pos:.2f}, Velocity: {vel:.2f}')
-
         # 最新のタイマー値を表示
         self.get_logger().info(f'  最新のタイマー: {self.latest_timer}')
 
