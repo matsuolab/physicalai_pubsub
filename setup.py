@@ -22,6 +22,7 @@ setup(
         'console_scripts': [
             'state_subscriber = physicalai_pubsub.state_subscriber:main',
             'action_publisher = physicalai_pubsub.action_publisher:main',
+            'action_publisher_rotate = physicalai_pubsub.action_publisher_rotate:main'
         ],
     },
 )

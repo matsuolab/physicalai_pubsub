@@ -51,7 +51,6 @@ class RobotActionPublisher(Node):
         point.velocities = [0.0] * len(positions)
         point.accelerations = [0.0] * len(positions)
         point.time_from_start = Duration(sec=int(time_from_start), nanosec=int((time_from_start % 1) * 1e9))
-        
         msg.points.append(point)
         self.publisher.publish(msg)
         self.get_logger().info(f'Published trajectory command: {positions}')
@@ -65,20 +64,31 @@ def main():
     """
     rclpy.init()
     robot_action_publisher = RobotActionPublisher()
-    
+
     try:
         # Move to initial position
-        robot_action_publisher.move_to_position([0.0, 0.0, 0.0, 0.0])
-        time.sleep(3.0)  # Wait for movement to complete
-        
+        #robot_action_publisher.move_to_position([0.0, 0.0, 0.0, 0.0])
+        #time.sleep(3.0)  # Wait for movement to complete
         # Move to a different position
-        robot_action_publisher.move_to_position([0.5, 0.3, -0.2, 0.1])
-        time.sleep(3.0)
-        
+        #robot_action_publisher.move_to_position([0.5, 0.3, -0.2, 0.1])
+        #time.sleep(3.0)
         # Return to initial position
-        robot_action_publisher.move_to_position([0.0, 0.0, 0.0, 0.0])
-        time.sleep(3.0)  # Wait for final movement to complete
-        
+        #robot_action_publisher.move_to_position([0.0, 0.0, 0.0, 0.0])
+        motions = [
+            [0.0, 0.0, 0.0, 0.0],
+            [0.3, -0.3, 0.2, 0.0],
+            [-0.3, 0.4, -0.2, 0.1],
+            [0.2, 0.2, 0.2, 0.2],
+            [-0.2, -0.2, -0.2, -0.2] ,
+            [0.5, 0.0, -0.5, 0.3],
+            [0.0, 0.0, 0.0, 0.0]
+	]
+
+        for i, pose in enumerate(motions):
+            robot_action_publisher.get_logger().info(f'Moving to pose {i+1}')
+            robot_action_publisher.move_to_position(pose)
+            time.sleep(3.0)  # Wait for movement to complete 
+
         robot_action_publisher.get_logger().info('All movements completed. Exiting...')
     except KeyboardInterrupt:
         robot_action_publisher.get_logger().info('Movement interrupted by user')
